@@ -85,5 +85,73 @@ namespace DinoGame2.Game.Casting
             int y = this.y * factor;
             return new Point(x, y);
         }
+
+        /// <summary>
+        /// sets the Y value to whatever the parameter is
+        /// </summary>
+        /// <para>
+        /// whatever you want the Y value to be set to
+        /// </para>
+        public void SetY(int newY)
+        {
+            this.y = newY;
+        }
+
+        /// <summary>
+        /// sets the X value to whatever the parameter is
+        /// </summary>
+        /// <para>
+        /// whatever you want the X value to be set to
+        /// </para>
+        public void SetX(int newX)
+        {
+            this.x =newX;
+        }
+        /// <summary>
+        /// This function will trim off the edges of a hitbox to make it a little bit smaller
+        /// </summary>
+        /// <para>
+        /// the type of corner that the point is at ("TopLeft", "TopRight", "BottomLeft", "BottomRight")
+        /// </para>
+        /// <para>
+        /// the number of pixel layers you want to shave off
+        /// </para>
+        public Point TrimHitbox(string cornerType, int amountOfPixelsToTrim)
+        {
+
+            int x = this.GetX();
+            int y = this.GetY();
+
+            //move point +X +Y
+            if (cornerType == "TopLeft")
+            {
+                x = x + amountOfPixelsToTrim;
+                y = y + amountOfPixelsToTrim;
+            }
+
+            //move point -X +Y
+            else if (cornerType == "TopRight")
+            {
+                x = x - amountOfPixelsToTrim;
+                y = y + amountOfPixelsToTrim;
+            }
+
+            //move point +X -Y
+            else if (cornerType == "BottomLeft")
+            {
+                x = x + amountOfPixelsToTrim;
+                y = y - amountOfPixelsToTrim;
+            }
+
+            //move point -X -Y
+            else if (cornerType == "BottomRight")
+            {
+                x = x - amountOfPixelsToTrim;
+                y = y - amountOfPixelsToTrim;
+            }
+
+            // sets the new X and Y to be the new X and Y of the Point 
+            return new Point(x, y);
+        }
     }
 }

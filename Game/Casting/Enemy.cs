@@ -77,6 +77,10 @@ namespace DinoGame2.Game.Casting
             Point BottomLeft = new Point(this.GetPosition().GetX(), this.GetPosition().GetY() + this.fontSize);
             Point TopRight = new Point(this.GetPosition().GetX() + this.fontSize, this.GetPosition().GetY());
             Point BottomRight = new Point(this.GetPosition().GetX() + this.fontSize, this.GetPosition().GetY() + this.fontSize);
+            TopLeft = TopLeft.TrimHitbox("TopLeft", 10);
+            BottomLeft = BottomLeft.TrimHitbox("BottomLeft", 10);
+            TopRight = TopRight.TrimHitbox("TopRight", 10);
+            BottomRight = BottomRight.TrimHitbox("BottomRight", 10);
             enemyHitboxList.Add(TopLeft);
             enemyHitboxList.Add(BottomLeft);
             enemyHitboxList.Add(TopRight);

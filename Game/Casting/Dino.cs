@@ -12,7 +12,7 @@ namespace DinoGame2.Game.Casting
     {
         Color color = Constants.BLUE;
         private Point position = Constants.DinoSpawn;
-        public string text = "D";
+        public string text = "O";
         Point velocity = new Point(0, 0);
         int fontSize = Constants.DinoAndEnemyFont_Size;
         public List<Point> dinoHitboxList = new List<Point>();
@@ -88,6 +88,10 @@ namespace DinoGame2.Game.Casting
             Point BottomLeft = new Point(this.GetPosition().GetX(), this.GetPosition().GetY() + this.fontSize);
             Point TopRight = new Point(this.GetPosition().GetX() + this.fontSize, this.GetPosition().GetY());
             Point BottomRight = new Point(this.GetPosition().GetX() + this.fontSize, this.GetPosition().GetY() + this.fontSize);
+            TopLeft = TopLeft.TrimHitbox("TopLeft", 10);
+            BottomLeft = BottomLeft.TrimHitbox("BottomLeft", 10);
+            TopRight = TopRight.TrimHitbox("TopRight", 10);
+            BottomRight = BottomRight.TrimHitbox("BottomRight", 10);
             dinoHitboxList.Add(TopLeft);
             dinoHitboxList.Add(BottomLeft);
             dinoHitboxList.Add(TopRight);
