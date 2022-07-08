@@ -99,7 +99,6 @@ namespace DinoGame2.Game.Scripting
             Goal goal = (Goal)cast.GetFirstActor("goal");
             List<Actor> dinos = cast.GetActors("dino");
             string yeah = score.GetText();
-            //turn score into an int
             
 
             allEnemiesHitboxList.Clear();
@@ -150,6 +149,7 @@ namespace DinoGame2.Game.Scripting
                 GameOverMessage.SetColor(Constants.WHITE);
                 GameOverMessage.SetFontSize(Constants.DinoAndEnemyFont_Size);
                 cast.AddActor("messages", GameOverMessage);
+                
 
                 //for now we'll just delete the dino if it touches a bad guy. later I'd like to make a class to make it so you can start a new game.
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DinoGame2.Game.Casting;
 using DinoGame2.Game.Services;
+using Raylib_cs;
 
 
 namespace DinoGame2.Game.Scripting
@@ -24,6 +25,7 @@ namespace DinoGame2.Game.Scripting
         /// <inheritdoc/>
         public void Execute(Cast cast, Script script)
         {
+            
             Dino dino = (Dino)cast.GetFirstActor("dino");
             Score score = (Score)cast.GetFirstActor("score");
             Goal goal = (Goal)cast.GetFirstActor("goal");
@@ -35,6 +37,15 @@ namespace DinoGame2.Game.Scripting
             videoService.DrawActor(goal);
             videoService.DrawActors(enemies);
             videoService.FlushBuffer();
+
+            Raylib.BeginDrawing();
+            //VideoService.Image DinoImage = LoadImage("DinoGame2_Complete/images/CompleteDino.png");
+            Image player = Raylib.LoadImage("DinoGame2_Complete/images/CompleteDino.png");
+            //Raylib.ImageResize(player, dino.GetFontSize(), dino.GetFontSize());
+            //Raylib.ImageDraw(player, (Rectangle){0, 0 (float)player.width, (float)player.height}, (Rectangle){ 30, 40, player.width*1.5f, player.height*1.5f }, Raylib_cs.Color.WHITE);
+            //Raylib.UnloadTexture(player);
+            Raylib.EndDrawing();
+            
         }
     }
 }

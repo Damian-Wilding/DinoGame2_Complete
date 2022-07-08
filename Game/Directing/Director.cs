@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DinoGame2.Game.Casting;
 using DinoGame2.Game.Scripting;
 using DinoGame2.Game.Services;
+using Raylib_cs;
 
 namespace DinoGame2.Game.Directing
 {
@@ -35,6 +36,12 @@ namespace DinoGame2.Game.Directing
             videoService.OpenWindow();
             while (videoService.IsWindowOpen())
             {
+                //Raylib.BeginDrawing();
+                //Raylib_cs raylib = new Raylib_cs();
+                //VideoService.Image DinoImage = LoadImage("DinoGame2_Complete/images/CompleteDino.png");
+                //Texture2D player = Raylib.LoadTexture("DinoGame2_Complete/images/CompleteDino.png");
+                //Raylib.DrawTexture(player, Constants.DinoSpawn.GetX(), Constants.DinoSpawn.GetY(), Raylib_cs.Color.WHITE);
+                // UnloadTexture(player);
                 ExecuteActions("input", cast, script);
                 ExecuteActions("update", cast, script);
                 ExecuteActions("output", cast, script);

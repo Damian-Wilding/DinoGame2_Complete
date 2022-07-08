@@ -131,5 +131,10 @@ namespace DinoGame2.Game.Services
             return new Raylib_cs.Color(r, g, b, a);
         }
 
+
+        public void DrawImage(Image image, int Xstart, int Ystart, int Xend, int Yend)
+        {
+            
+        }
     }
 }

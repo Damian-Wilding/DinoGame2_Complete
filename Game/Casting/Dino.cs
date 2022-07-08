@@ -122,6 +122,13 @@ namespace DinoGame2.Game.Casting
             this.position = point;
         }
 
+        
+            //Raylib_cs raylib = new Raylib_cs();
+            //VideoService.Image DinoImage = LoadImage("DinoGame2_Complete/images/CompleteDino.png");
+            //Texture2D player = Raylib.LoadTexture("DinoGame2_Complete/images/CompleteDino.png");
+            //Raylib.DrawTexture(player, Constants.DinoSpawn.GetX(), Constants.DinoSpawn.GetY(), Raylib_cs.Color.WHITE);
+            // UnloadTexture(player);
+
         /// <summary>
         /// Prepares the Dino by setting all its attributes
         /// </summary>
