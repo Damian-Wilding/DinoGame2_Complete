@@ -15,6 +15,9 @@ namespace DinoGame2.Game.Directing
 
     public class Director
     {
+        public Image DinoImage;
+        public Image EnemyImage;
+        public Image GoalImage;
         private VideoService videoService;
 
         /// <summary>
@@ -35,9 +38,45 @@ namespace DinoGame2.Game.Directing
         {
             
             videoService.OpenWindow();
-
+            
+            //load all the images that will be used in the game.
+            Dino dino = (Dino)cast.GetFirstActor("dino");
+            string dinoImagePath = dino.ActorImage;
+            DinoImage = Raylib.LoadImage(dinoImagePath);
+            Enemy enamy = (Enemy)cast.GetFirstActor("enemy");
+            EnemyImage = Raylib.LoadImage(enamy.ActorImage);
+            Goal goal = (Goal)cast.GetFirstActor("goal");
+            GoalImage = Raylib.LoadImage(goal.ActorImage);
+            
             
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
 
             
             while (videoService.IsWindowOpen())
@@ -53,9 +92,9 @@ namespace DinoGame2.Game.Directing
                 ExecuteActions("output", cast, script);
             }
             videoService.CloseWindow();
-            //Raylib.UnloadTexture(player);
-            //Raylib.UnloadTexture(badGuy);
-            //Raylib.UnloadTexture(GoalTexture);
+            Raylib.UnloadImage(DinoImage);
+            Raylib.UnloadImage(EnemyImage);
+            Raylib.UnloadImage(GoalImage);
         }
         /// <summary>
         /// Calls execute for each action in the given group.

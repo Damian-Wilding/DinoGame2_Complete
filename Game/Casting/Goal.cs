@@ -17,7 +17,7 @@ namespace DinoGame2.Game.Casting
         {
             this.SetColor(Constants.YELLOW);
             //this.SetPosition(new Point(1,0));
-            this.SetText("___________________________________________________________________");
+            this.SetText("");
             this.SetVelocity(new Point(0,0));
             this.SetFontSize(Constants.DinoAndEnemyFont_Size);
             this.SetPosition(Constants.GoalPosition);

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DinoGame2.Game.Casting;
 using DinoGame2.Game.Services;
 using Raylib_cs;
+using DinoGame2.Game.Directing;
 
 
 namespace DinoGame2.Game.Scripting
@@ -42,17 +43,21 @@ namespace DinoGame2.Game.Scripting
 
             //}
             
+            //Raylib.ImageDraw()
             string dinoImage = dino.ActorImage;
+            //Image DinoImage = new Image();
+            //DinoImage = Director.DinoImage;
+            
             Texture2D player = Raylib.LoadTexture(dinoImage);
             Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
             string enemyImage = enemy.ActorImage;
             Texture2D badGuy = Raylib.LoadTexture(enemyImage);
             string goalImage = goal.ActorImage;
             Texture2D GoalTexture = Raylib.LoadTexture(goalImage);
-            Raylib.DrawTexture(GoalTexture, 0, 0, Raylib_cs.Color.WHITE);
+            Raylib.DrawTexture(GoalTexture, 0, goal.GoalsHitBoxY - 128, Raylib_cs.Color.WHITE);
             Raylib.DrawTexture(player, 100, 100, Raylib_cs.Color.WHITE);
 
-
+            ;
 
             videoService.FlushBuffer();
 

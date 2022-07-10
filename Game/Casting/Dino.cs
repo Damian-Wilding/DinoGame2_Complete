@@ -24,7 +24,7 @@ namespace DinoGame2.Game.Casting
         public Dino()
         {
             PrepareBody();
-            this.ActorImage = "images/CompleteDino.png";
+            this.ActorImage = "images/CompleteDino45.png";
         }
 
         /// <summary>

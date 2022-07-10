@@ -16,7 +16,7 @@ namespace DinoGame2.Game.Casting
         public Enemy()
         {
             SetupEnemy();
-            this.ActorImage = "DinoGame2_Complete/images/evilDino.png";
+            this.ActorImage = "DinoGame2_Complete/images/evilDino45.png";
         }
 
         /// <summary>
