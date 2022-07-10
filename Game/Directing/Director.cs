@@ -33,7 +33,13 @@ namespace DinoGame2.Game.Directing
         /// <param name="script">The given script.</param>
         public void StartGame(Cast cast, Script script)
         {
+            
             videoService.OpenWindow();
+
+            
+
+
+            
             while (videoService.IsWindowOpen())
             {
                 //Raylib.BeginDrawing();
@@ -47,6 +53,9 @@ namespace DinoGame2.Game.Directing
                 ExecuteActions("output", cast, script);
             }
             videoService.CloseWindow();
+            //Raylib.UnloadTexture(player);
+            //Raylib.UnloadTexture(badGuy);
+            //Raylib.UnloadTexture(GoalTexture);
         }
         /// <summary>
         /// Calls execute for each action in the given group.

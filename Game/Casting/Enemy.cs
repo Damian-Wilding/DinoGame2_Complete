@@ -11,10 +11,12 @@ namespace DinoGame2.Game.Casting
         Point position;
         public List<Point> enemyHitboxList = new List<Point>();
 
-        int fontSize = Constants.DinoAndEnemyFont_Size;        
+        int fontSize = Constants.DinoAndEnemyFont_Size;     
+        public string ActorImage;   
         public Enemy()
         {
             SetupEnemy();
+            this.ActorImage = "DinoGame2_Complete/images/evilDino.png";
         }
 
         /// <summary>

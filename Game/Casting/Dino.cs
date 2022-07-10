@@ -16,6 +16,7 @@ namespace DinoGame2.Game.Casting
         Point velocity = new Point(0, 0);
         int fontSize = Constants.DinoAndEnemyFont_Size;
         public List<Point> dinoHitboxList = new List<Point>();
+        public string ActorImage;
 
         /// <summary>
         /// Constructs a new instance of a Dino.
@@ -23,6 +24,7 @@ namespace DinoGame2.Game.Casting
         public Dino()
         {
             PrepareBody();
+            this.ActorImage = "images/CompleteDino.png";
         }
 
         /// <summary>
@@ -121,13 +123,6 @@ namespace DinoGame2.Game.Casting
         {
             this.position = point;
         }
-
-        
-            //Raylib_cs raylib = new Raylib_cs();
-            //VideoService.Image DinoImage = LoadImage("DinoGame2_Complete/images/CompleteDino.png");
-            //Texture2D player = Raylib.LoadTexture("DinoGame2_Complete/images/CompleteDino.png");
-            //Raylib.DrawTexture(player, Constants.DinoSpawn.GetX(), Constants.DinoSpawn.GetY(), Raylib_cs.Color.WHITE);
-            // UnloadTexture(player);
 
         /// <summary>
         /// Prepares the Dino by setting all its attributes

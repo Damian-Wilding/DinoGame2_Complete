@@ -6,9 +6,11 @@ namespace DinoGame2.Game.Casting
     {
         public int GoalsHitBoxY = Constants.GoalPosition.GetY() +30;
         public int points = Constants.GoalPoints;
+        public string ActorImage;
         public Goal()
         {
             MakeTheGoal();
+            ActorImage = "images/bricks.png";
         }
        
         public void MakeTheGoal()

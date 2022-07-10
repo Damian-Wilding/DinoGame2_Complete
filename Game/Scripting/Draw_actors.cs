@@ -36,15 +36,33 @@ namespace DinoGame2.Game.Scripting
             videoService.DrawActor(dino);
             videoService.DrawActor(goal);
             videoService.DrawActors(enemies);
+
+            //foreach (Actor actor in cast)
+            //{
+
+            //}
+            
+            string dinoImage = dino.ActorImage;
+            Texture2D player = Raylib.LoadTexture(dinoImage);
+            Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
+            string enemyImage = enemy.ActorImage;
+            Texture2D badGuy = Raylib.LoadTexture(enemyImage);
+            string goalImage = goal.ActorImage;
+            Texture2D GoalTexture = Raylib.LoadTexture(goalImage);
+            Raylib.DrawTexture(GoalTexture, 0, 0, Raylib_cs.Color.WHITE);
+            Raylib.DrawTexture(player, 100, 100, Raylib_cs.Color.WHITE);
+
+
+
             videoService.FlushBuffer();
 
-            Raylib.BeginDrawing();
+            
+            //Raylib.ClearBackground(Raylib_cs.Color.BLACK);
             //VideoService.Image DinoImage = LoadImage("DinoGame2_Complete/images/CompleteDino.png");
-            Image player = Raylib.LoadImage("DinoGame2_Complete/images/CompleteDino.png");
+            //Image player = Raylib.LoadImage("DinoGame2_Complete/images/CompleteDino.png");
             //Raylib.ImageResize(player, dino.GetFontSize(), dino.GetFontSize());
             //Raylib.ImageDraw(player, (Rectangle){0, 0 (float)player.width, (float)player.height}, (Rectangle){ 30, 40, player.width*1.5f, player.height*1.5f }, Raylib_cs.Color.WHITE);
             //Raylib.UnloadTexture(player);
-            Raylib.EndDrawing();
             
         }
     }

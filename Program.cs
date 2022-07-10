@@ -20,6 +20,7 @@ namespace DinoGame2.Game
         {
             //creating the cast
             Cast cast = new Cast();
+            Cast CastImages = new Cast();
             cast.AddActor("dino", new Dino());
             cast.AddActor("enemy", new Enemy());
             //cast.AddActor("enemy", new Enemy());
@@ -35,7 +36,7 @@ namespace DinoGame2.Game
             script.AddAction("update", new Handle_collision());
             script.AddAction("update", new Movement());
             script.AddAction("output", new Draw_actors(videoService));
-
+            
             //start the game
             Director director = new Director(videoService);
             director.StartGame(cast, script);
