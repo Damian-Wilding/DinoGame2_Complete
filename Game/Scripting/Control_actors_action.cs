@@ -31,22 +31,45 @@ namespace DinoGame2.Game.Scripting
             // left
             if (keyboardService.IsKeyDown("left"))
             {
-                direction = new Point(-Constants.CELL_SIZE, 0);
-                //System.Console.WriteLine("moving left");
+                if (dino.GetPosition().GetX() > 10)
+                {
+                    direction = new Point(-Constants.CELL_SIZE, 0);
+                    //System.Console.WriteLine("moving left");
+                }
+                else
+                {
+                    direction = new Point(0, 0);
+                }
+                
+                
             }
 
             // right
             else if (keyboardService.IsKeyDown("right"))
             {
-                direction = new Point(Constants.CELL_SIZE, 0);
-                //System.Console.WriteLine("moving right");
+                if (dino.GetPosition().GetX() < Constants.MAX_X - dino.GetFontSize())
+                {
+                    direction = new Point(Constants.CELL_SIZE, 0);
+                    //System.Console.WriteLine("moving left");
+                }
+                else
+                {
+                    direction = new Point(0, 0);
+                }
             }
 
             // down
             else if (keyboardService.IsKeyDown("down"))
             {
-                direction = new Point(0, Constants.CELL_SIZE);
-                //System.Console.WriteLine("moving down");
+                if (dino.GetPosition().GetY() < Constants.DinoSpawn.GetY())
+                {
+                    direction = new Point(0, Constants.CELL_SIZE);
+                    //System.Console.WriteLine("moving left");
+                }
+                else
+                {
+                    direction = new Point(0, 0);
+                }
             }
 
             // up

@@ -12,11 +12,12 @@ namespace DinoGame2.Game.Casting
     {
         Color color = Constants.BLUE;
         private Point position = Constants.DinoSpawn;
-        public string text = "O";
+        public string text = " ";
         Point velocity = new Point(0, 0);
         int fontSize = Constants.DinoAndEnemyFont_Size;
         public List<Point> dinoHitboxList = new List<Point>();
         public string ActorImage;
+        public string ActorImageLeft;
 
         /// <summary>
         /// Constructs a new instance of a Dino.
@@ -24,7 +25,7 @@ namespace DinoGame2.Game.Casting
         public Dino()
         {
             PrepareBody();
-            this.ActorImage = "images/CompleteDino45.png";
+            this.ActorImage = "images/dinoComplete45.png";
         }
 
         /// <summary>
@@ -114,6 +115,14 @@ namespace DinoGame2.Game.Casting
             int x = (position.GetX() + velocity.GetX());
             int y = (position.GetY() + velocity.GetY());
             this.position = new Point(x, y);
+            if (velocity.GetX() < 0)
+            {
+                this.ActorImage = "images/dinoComplete45Left.png";
+            }
+            if (velocity.GetX() > 0)
+            {
+                this.ActorImage = "images/dinoComplete45.png";
+            }
         }
 
         /// <summary>

@@ -13,10 +13,12 @@ namespace DinoGame2.Game.Casting
 
         int fontSize = Constants.DinoAndEnemyFont_Size;     
         public string ActorImage;   
+        public string ActorImageLeft;
         public Enemy()
         {
             SetupEnemy();
-            this.ActorImage = "DinoGame2_Complete/images/evilDino45.png";
+            this.ActorImage = "images/evilDino45.png";
+            this.ActorImageLeft = "images/evilDino45Left.png";
         }
 
         /// <summary>
@@ -28,10 +30,12 @@ namespace DinoGame2.Game.Casting
             if (this.GetPosition().GetX() == 0)
             {
                 this.velocity = new Point (1, 0);
+                this.SetVelocity(new Point (1, 0));
             }
-            if (this.GetPosition().GetX() == Constants.MAX_X)
+            if (this.GetPosition().GetX() == Constants.MAX_X - this.fontSize)
             {
                 this.velocity = new Point (-1, 0);
+                this.SetVelocity(new Point(-1, 0));
             }
             Point NewPosition = new Point(position.GetX() + velocity.GetX(), position.GetY() + velocity.GetY());
             this.SetPosition(NewPosition);
@@ -104,7 +108,7 @@ namespace DinoGame2.Game.Casting
         {   
             this.position = EnemyCreateStartPosition();
             this.velocity = EnemyChoosestartingDirection();
-            this.text = "O";
+            this.text = "";
             this.color = Constants.RED;
             this.SetVelocity(velocity);
             this.SetColor(color);
