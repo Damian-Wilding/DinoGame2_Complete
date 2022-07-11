@@ -61,6 +61,7 @@ namespace DinoGame2.Game.Scripting
             //draw the score and the black background behind it
             Image ScoreBackgroundImage = Raylib.GenImageColor(30, 20, Raylib_cs.Color.BLACK);
             Texture2D ScoreBackground = Raylib.LoadTextureFromImage(ScoreBackgroundImage);
+            Raylib.DrawTexture(ScoreBackground, 0, 0, Raylib_cs.Color.BLACK);
             videoService.DrawActor(score);
             
             //draws the dino player

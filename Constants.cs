@@ -30,7 +30,7 @@ namespace DinoGame2.Game
         public static int Enemy_Top_Row = GoalPosition.GetY() * (DinoAndEnemyFont_Size / FONT_SIZE); //30
         public static int Enemy_Bottom_Row = ROWS * FONT_SIZE - ((DinoAndEnemyFont_Size) * 3); // 40 * 15 - 
 
-        public static Point scorePosition = new Point(10,0);
+        public static Point scorePosition = new Point(10,2);
 
         // Lets make some colors to use in the beta.
         public static Color RED = new Color(255, 0, 0);
