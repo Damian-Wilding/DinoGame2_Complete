@@ -28,7 +28,8 @@ namespace DinoGame2.Game
             cast.AddActor("goal", new Goal());
 
             KeyboardService keyboardService = new KeyboardService();
-            VideoService videoService = new VideoService(false);
+            VideoService videoService = new VideoService(true);
+            //MyTimer frameCount = new MyTimer();
 
             //creating the script
             Script script = new Script();

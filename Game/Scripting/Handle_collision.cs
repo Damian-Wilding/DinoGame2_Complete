@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using DinoGame2.Game.Casting;
 using DinoGame2.Game.Services;
+using Raylib_cs;
 
 namespace DinoGame2.Game.Scripting
 {
@@ -15,13 +16,15 @@ namespace DinoGame2.Game.Scripting
     /// </summary>
     public class Handle_collision : Action
     {
-        private bool isGameOver = false;
+        public bool isGameOver = false;
+        public bool isPlayerExploding;
         List<List<Point>> allEnemiesHitboxList = new List<List<Point>>();
         /// <summary>
         /// Constructs a new instance of Handle_collision.
         /// </summary>
         public Handle_collision()
         {
+            isPlayerExploding = false;
         }
 
         /// <inheritdoc/>
@@ -33,11 +36,8 @@ namespace DinoGame2.Game.Scripting
                 HandleGoalCollisions(cast);
                 HandleGameOver(cast);
             }
-            //else
-            //{
-            //    HandleEnemyCollisions(cast);
-            //    HandleGoalCollisions(cast);
-            //}
+            
+            
         }
 
         /// <summary>
@@ -150,6 +150,14 @@ namespace DinoGame2.Game.Scripting
                 GameOverMessage.SetFontSize(Constants.DinoAndEnemyFont_Size);
                 cast.AddActor("messages", GameOverMessage);
                 
+                
+                
+            
+            
+                //Raylib.ClearBackground(Raylib_cs.Color.BLACK);
+                //Raylib.DrawText(GameOverMessage, Constants.MAX_X / 2, Constants.MAX_Y / 2, Constants.FONT_SIZE, Raylib_cs.Color.WHITE);
+
+            
 
                 //for now we'll just delete the dino if it touches a bad guy. later I'd like to make a class to make it so you can start a new game.
 
@@ -163,27 +171,6 @@ namespace DinoGame2.Game.Scripting
             }
         }
 
-        private void SpawnEnemies()
-        {
-            //first delete all enemies from the game
-            Cast cast = new Cast();
-            List<Actor> enemies = cast.GetActors("emeny");
-            foreach (Actor enemy in enemies)
-                {
-                    cast.RemoveActor("enemy", enemy);
-                }
-
-            //spawn the enemies every round
-            
-            //loop that will run 3 times (to spawn 3 enemies)
-            for (int i = 0; i < 3; i++)
-            {
-                //make new enemy
-                Enemy enemy = new Enemy();
-                //add that enemy to the cast
-                cast.AddActor("emeny", enemy);
-            }
-        
-        }
+    
     }
 }

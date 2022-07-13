@@ -19,6 +19,7 @@ namespace DinoGame2.Game.Directing
         public Image EnemyImage;
         public Image GoalImage;
         private VideoService videoService;
+        public MyTimer timer;
 
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
@@ -47,38 +48,11 @@ namespace DinoGame2.Game.Directing
             EnemyImage = Raylib.LoadImage(enamy.ActorImage);
             Goal goal = (Goal)cast.GetFirstActor("goal");
             GoalImage = Raylib.LoadImage(goal.ActorImage);
+
+            //start timer
+            MyTimer frameCount = new MyTimer();
             
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-
-            
+            //gameloop
             while (videoService.IsWindowOpen())
             {
                 //Raylib.BeginDrawing();

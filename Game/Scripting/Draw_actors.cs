@@ -3,6 +3,8 @@ using DinoGame2.Game.Casting;
 using DinoGame2.Game.Services;
 using Raylib_cs;
 using DinoGame2.Game.Directing;
+using System.Numerics;
+using DinoGame2.Game;
 
 
 namespace DinoGame2.Game.Scripting
@@ -14,6 +16,10 @@ namespace DinoGame2.Game.Scripting
     public class Draw_actors : Action
     {
         private VideoService videoService;
+        //DinoGame2.Game.Services.Timer frameCount;
+        public Texture2D explosion;
+        //private bool isGameOver;
+        public MyTimer frameCount;
 
         /// <summary>
         /// Constructs a new instance of Draw_actors using the given KeyboardService.
@@ -21,6 +27,9 @@ namespace DinoGame2.Game.Scripting
         public Draw_actors(VideoService videoService)
         {
             this.videoService = videoService;
+            //this.isGameOver = Handle_collision.isGameOver;
+            //this.frameCount = DinoGame2.Game.Directing.Director.frameCount;
+            //this.explosion = Raylib.LoadTexture("images/explosion_sprite_sheet_no_green.png");
         }
 
         /// <inheritdoc/>
@@ -34,7 +43,10 @@ namespace DinoGame2.Game.Scripting
 
             //wipes off the screen to prepare for the new drawing
             videoService.ClearBuffer();
-        
+            //if (isgameover == true)
+            //{
+                
+            //}
             
             //sets up all the textures to be drawn
             string dinoImage = dino.ActorImage;
@@ -80,9 +92,14 @@ namespace DinoGame2.Game.Scripting
                 }
                 
             }
+            
+            //test draw explosion
 
-
+            //this.explosion = Raylib.LoadTexture("images/explosion_sprite_sheet_no_green.png");
+            Raylib.DrawTextureRec(explosion, new Rectangle(450, 0, 45, 45), new Vector2(300, 300), Raylib_cs.Color.WHITE);
+            
             videoService.FlushBuffer();
+            //frameCount.TimerUpdate();
         }
     }
 }
