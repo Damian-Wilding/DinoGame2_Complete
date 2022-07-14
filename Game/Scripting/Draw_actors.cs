@@ -39,19 +39,17 @@ namespace DinoGame2.Game.Scripting
             Goal goal = (Goal)cast.GetFirstActor("goal");
             List<Actor> enemies = cast.GetActors("enemy");
             Background background = (Background)cast.GetFirstActor("background");
+            Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
 
             //wipes off the screen to prepare for the new drawing
             videoService.ClearBuffer();
             
             //sets up all the textures to be drawn
-            
-            Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
             string enemyImageLeft = enemy.ActorImageLeft;
             string enemyImageRight = enemy.ActorImage;
-            Texture2D badGuyRight = Raylib.LoadTexture(enemyImageRight);
-            Texture2D badGuyLeft = Raylib.LoadTexture(enemyImageLeft);
-            //string grassPath = "images/grass2.png";
-            //Texture2D grass = Raylib.LoadTexture(grassPath);
+            //Texture2D badGuyRight = Raylib.LoadTexture(enemyImageRight);
+            //Texture2D badGuyLeft = Raylib.LoadTexture(enemyImageLeft);
+            
 
             //draws grass (you should touch some dude)
             Raylib.DrawTexture(background.Texture, 0, 0, Raylib_cs.Color.WHITE);
@@ -59,14 +57,14 @@ namespace DinoGame2.Game.Scripting
             Raylib.DrawTexture(background.Texture, 704, 0, Raylib_cs.Color.WHITE);
             Raylib.DrawTexture(background.Texture, 704, 320, Raylib_cs.Color.WHITE);
             
-            //draws the goal (the brick blocks)
-            string goalImage = goal.ActorImage;
-            Texture2D GoalTexture = Raylib.LoadTexture(goalImage);
-            Raylib.DrawTexture(GoalTexture, 0, goal.GoalsHitBoxY - 128, Raylib_cs.Color.WHITE);
+            //draws goal
+            Raylib.DrawTexture(goal.Texture, 0, goal.GoalsHitBoxY - 128, Raylib_cs.Color.WHITE);
 
             //draw the score and the black background behind it
             Image ScoreBackgroundImage = Raylib.GenImageColor(30, 20, Raylib_cs.Color.BLACK);
+            
             Texture2D ScoreBackground = Raylib.LoadTextureFromImage(ScoreBackgroundImage);
+            
             Raylib.DrawTexture(ScoreBackground, 0, 0, Raylib_cs.Color.BLACK);
             videoService.DrawActor(score);
             
@@ -78,11 +76,11 @@ namespace DinoGame2.Game.Scripting
             {
                 if (enemy2.GetVelocity().Equals(new Point(1,0)))
                 {
-                    Raylib.DrawTexture(badGuyRight, enemy2.GetPosition().GetX(), enemy2.GetPosition().GetY(), Raylib_cs.Color.WHITE);
+                    Raylib.DrawTexture(enemy.Texture, enemy2.GetPosition().GetX(), enemy2.GetPosition().GetY(), Raylib_cs.Color.WHITE);
                 }
                 else
                 {
-                    Raylib.DrawTexture(badGuyLeft, enemy2.GetPosition().GetX(), enemy2.GetPosition().GetY(), Raylib_cs.Color.WHITE);    
+                    Raylib.DrawTexture(enemy.Texture, enemy2.GetPosition().GetX(), enemy2.GetPosition().GetY(), Raylib_cs.Color.WHITE);    
                 }
                 
             }
@@ -93,6 +91,8 @@ namespace DinoGame2.Game.Scripting
             Raylib.DrawTextureRec(explosion, new Rectangle(450, 0, 45, 45), new Vector2(300, 300), Raylib_cs.Color.WHITE);
             
             videoService.FlushBuffer();
+            Raylib.UnloadImage(ScoreBackgroundImage);
+            Raylib.UnloadTexture(ScoreBackground);
             //frameCount.TimerUpdate();
         }
     }

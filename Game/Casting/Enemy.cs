@@ -18,6 +18,8 @@ namespace DinoGame2.Game.Casting
         public string texturePath = "images/evilDino45.png";
         public string texturePathLeft = "images/evilDino45Left.png";
         public Texture2D Texture = new Texture2D();
+        //public Texture2D TextureL = new Texture2D();
+
         public Enemy()
         {
             SetupEnemy();

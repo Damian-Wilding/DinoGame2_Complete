@@ -132,17 +132,17 @@ namespace DinoGame2.Game.Services
         }
 
 
-        public void DrawImage(string imagetype, int Xstart, int Ystart, int Xend, int Yend)
-        {
-            if (imagetype == "dino" || imagetype == "player")
-            {
-                Image player = Raylib.LoadImage("DinoGame2_Complete/images/CompleteDino.png");
-            }
-            else 
-            {
-                
-            }
-            
-        }
+        //public void DrawImage(string imagetype, int Xstart, int Ystart, int Xend, int Yend)
+        //{
+        //    if (imagetype == "dino" || imagetype == "player")
+        //    {
+        //        Image player = Raylib.LoadImage("DinoGame2_Complete/images/CompleteDino.png");
+        //    }
+        //    else 
+        //    {
+        //        
+        //    }
+        //    
+        //}
     }
 }
