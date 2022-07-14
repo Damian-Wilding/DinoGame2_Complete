@@ -19,7 +19,7 @@ namespace DinoGame2.Game.Scripting
         //DinoGame2.Game.Services.Timer frameCount;
         public Texture2D explosion;
         //private bool isGameOver;
-        public MyTimer frameCount;
+        //public MyTimer frameCount;
 
         /// <summary>
         /// Constructs a new instance of Draw_actors using the given KeyboardService.

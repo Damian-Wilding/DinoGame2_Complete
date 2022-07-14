@@ -19,7 +19,7 @@ namespace DinoGame2.Game.Directing
         //public Image EnemyImage;
         //public Image GoalImage;
         private VideoService videoService;
-        public MyTimer timer;
+        //public MyTimer timer;
         Handle_player_enemy_collision handle_Player_Enemy_Collision;
         //Texture2D backgroundImage = new Texture2D();
 
