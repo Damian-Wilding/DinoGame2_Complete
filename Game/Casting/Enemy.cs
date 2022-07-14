@@ -1,4 +1,5 @@
 using System;
+using Raylib_cs;
 
 namespace DinoGame2.Game.Casting
 {
@@ -12,13 +13,16 @@ namespace DinoGame2.Game.Casting
         public List<Point> enemyHitboxList = new List<Point>();
 
         int fontSize = Constants.DinoAndEnemyFont_Size;     
-        public string ActorImage;   
-        public string ActorImageLeft;
+        public string ActorImage = "images/evilDino45.png";
+        public string ActorImageLeft = "images/evilDino45Left.png";
+        public string texturePath = "images/evilDino45.png";
+        public string texturePathLeft = "images/evilDino45Left.png";
+        public Texture2D Texture = new Texture2D();
         public Enemy()
         {
             SetupEnemy();
-            this.ActorImage = "images/evilDino45.png";
-            this.ActorImageLeft = "images/evilDino45Left.png";
+            
+            
         }
 
         /// <summary>
@@ -53,11 +57,13 @@ namespace DinoGame2.Game.Casting
             if (direction == 1)
             {
                 velocity = new Point (1,0);
+                this.Texture = Raylib.LoadTexture(this.ActorImage);
             }
             //code for moving to the left
             else if (direction == 2)
             {
                 velocity = new Point (-1,0);
+                this.Texture = Raylib.LoadTexture(this.ActorImageLeft);
             }
             return velocity;
         }
@@ -114,12 +120,25 @@ namespace DinoGame2.Game.Casting
             this.SetColor(color);
             this.SetText(text);
             this.SetPosition(position);
-
             this.SetFontSize(this.fontSize);
         }
 
 
+        ///<summary>
+        /// gets and returns the texture of the enemy
+        ///</summary>
+        public Texture2D GetTexture()
+        {
+            return this.Texture;
+        }
 
+        ///<summary>
+        /// sets the enemies texture
+        ///</summary>
+        public void SetTexture(string path)
+        {
+            this.Texture = Raylib.LoadTexture(path);
+        }
 
 
 

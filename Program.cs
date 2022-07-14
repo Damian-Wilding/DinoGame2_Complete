@@ -33,8 +33,9 @@ namespace DinoGame2.Game
 
             //creating the script
             Script script = new Script();
-            script.AddAction("input", new Control_actors_action(keyboardService));
-            script.AddAction("update", new Handle_collision());
+            script.AddAction("input", new Control_dino_action(keyboardService));
+            script.AddAction("update", new Handle_player_enemy_collision());
+            script.AddAction("update", new Handle_player_goal_collision());
             script.AddAction("update", new Movement());
             script.AddAction("output", new Draw_actors(videoService));
             

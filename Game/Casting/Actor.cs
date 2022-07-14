@@ -17,6 +17,7 @@ namespace DinoGame2.Game.Casting
         private Color color = Constants.BLACK;
         private Point position = new Point(0, 0);
         private Point velocity = new Point(0, 0);
+        //public string texturePath;
 
         /// <summary>
         /// Constructs a new instance of Actor.

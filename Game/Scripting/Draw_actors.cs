@@ -43,14 +43,9 @@ namespace DinoGame2.Game.Scripting
 
             //wipes off the screen to prepare for the new drawing
             videoService.ClearBuffer();
-            //if (isgameover == true)
-            //{
-                
-            //}
             
             //sets up all the textures to be drawn
-            string dinoImage = dino.ActorImage;
-            Texture2D player = Raylib.LoadTexture(dinoImage);
+            
             Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
             string enemyImageLeft = enemy.ActorImageLeft;
             string enemyImageRight = enemy.ActorImage;
@@ -77,7 +72,7 @@ namespace DinoGame2.Game.Scripting
             videoService.DrawActor(score);
             
             //draws the dino player
-            Raylib.DrawTexture(player, dino.GetPosition().GetX(), dino.GetPosition().GetY(), Raylib_cs.Color.WHITE);
+            Raylib.DrawTexture(dino.Texture, dino.GetPosition().GetX(), dino.GetPosition().GetY(), Raylib_cs.Color.WHITE);
 
             //draws the evil dinos based on the direction they're headed
             foreach (Enemy enemy2 in enemies)

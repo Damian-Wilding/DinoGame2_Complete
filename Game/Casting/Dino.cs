@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Raylib_cs;
 
 namespace DinoGame2.Game.Casting
 {
@@ -16,8 +17,11 @@ namespace DinoGame2.Game.Casting
         Point velocity = new Point(0, 0);
         int fontSize = Constants.DinoAndEnemyFont_Size;
         public List<Point> dinoHitboxList = new List<Point>();
-        public string ActorImage;
-        public string ActorImageLeft;
+        public string ActorImageText = "images/dinoComplete45.png";
+        public string ActorImageLeftText = "images/dinoComplete45Left.png";
+        public string texturePath = "images/dinoComplete45.png";
+        public Texture2D Texture = new Texture2D();
+        
 
         /// <summary>
         /// Constructs a new instance of a Dino.
@@ -25,7 +29,8 @@ namespace DinoGame2.Game.Casting
         public Dino()
         {
             PrepareBody();
-            this.ActorImage = "images/dinoComplete45.png";
+            this.Texture = Raylib.LoadTexture(this.ActorImageText);
+            Raylib.LoadTexture(this.ActorImageLeftText);
         }
 
         /// <summary>
@@ -117,11 +122,11 @@ namespace DinoGame2.Game.Casting
             this.position = new Point(x, y);
             if (velocity.GetX() < 0)
             {
-                this.ActorImage = "images/dinoComplete45Left.png";
+                this.ActorImageText = "images/dinoComplete45Left.png";
             }
             if (velocity.GetX() > 0)
             {
-                this.ActorImage = "images/dinoComplete45.png";
+                this.ActorImageText = "images/dinoComplete45.png";
             }
         }
 
@@ -146,6 +151,22 @@ namespace DinoGame2.Game.Casting
             this.SetVelocity(velocity);
             this.SetText(text);
             this.SetColor(color);
+        }
+
+        ///<summary>
+        /// gets and returns the texture of the dino
+        ///</summary>
+        public Texture2D GetTexture()
+        {
+            return this.Texture;
+        }
+
+        ///<summary>
+        /// sets the dinos texture
+        ///</summary>
+        public void SetTexture(string path)
+        {
+            this.Texture = Raylib.LoadTexture(path);
         }
     }
 }

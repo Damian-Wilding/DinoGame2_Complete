@@ -1,4 +1,5 @@
 using System;
+using Raylib_cs;
 
 namespace DinoGame2.Game.Casting
 {
@@ -6,11 +7,12 @@ namespace DinoGame2.Game.Casting
     {
         public int GoalsHitBoxY = Constants.GoalPosition.GetY() +30;
         public int points = Constants.GoalPoints;
-        public string ActorImage;
+        public string ActorImage = "images/bricks.png";
+        public string texturePath = "images/bricks.png";
+        public Texture2D Texture = new Texture2D();
         public Goal()
         {
             MakeTheGoal();
-            ActorImage = "images/bricks.png";
         }
        
         public void MakeTheGoal()
@@ -21,6 +23,7 @@ namespace DinoGame2.Game.Casting
             this.SetVelocity(new Point(0,0));
             this.SetFontSize(Constants.DinoAndEnemyFont_Size);
             this.SetPosition(Constants.GoalPosition);
+            this.Texture = Raylib.LoadTexture(this.texturePath);
         }
     }
 }

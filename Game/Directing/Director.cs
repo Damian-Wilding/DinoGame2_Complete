@@ -15,9 +15,9 @@ namespace DinoGame2.Game.Directing
 
     public class Director
     {
-        public Image DinoImage;
-        public Image EnemyImage;
-        public Image GoalImage;
+        //public Image DinoImage;
+        //public Image EnemyImage;
+        //public Image GoalImage;
         private VideoService videoService;
         public MyTimer timer;
 
@@ -37,38 +37,51 @@ namespace DinoGame2.Game.Directing
         /// <param name="script">The given script.</param>
         public void StartGame(Cast cast, Script script)
         {
+            //Raylib.InitAudioDevice();
             
             videoService.OpenWindow();
-            
-            //load all the images that will be used in the game.
-            Dino dino = (Dino)cast.GetFirstActor("dino");
-            string dinoImagePath = dino.ActorImage;
-            DinoImage = Raylib.LoadImage(dinoImagePath);
-            Enemy enamy = (Enemy)cast.GetFirstActor("enemy");
-            EnemyImage = Raylib.LoadImage(enamy.ActorImage);
-            Goal goal = (Goal)cast.GetFirstActor("goal");
-            GoalImage = Raylib.LoadImage(goal.ActorImage);
 
-            //start timer
+            SoundService soundService = new SoundService();
+
+            //returns true if the audio device is configured properly
+            Console.WriteLine(Raylib.IsAudioDeviceReady());
+
+            
+            soundService.PlaySound(soundService.GetSound());
+            
+
+            //load all the textures that will be used in the game.
+            Dino dino = (Dino)cast.GetFirstActor("dino");
+            //Texture2D player = dino.GetTexture();
+            //Texture2D playerLeft = Raylib.LoadTexture(dino.ActorImageLeftText);
+            Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
+            //Texture2D enemyRight = Raylib.LoadTexture(enemy.texturePath);
+            //Texture2D enemyLeft = Raylib.LoadTexture(enemy.texturePathLeft);
+            Goal goal = (Goal)cast.GetFirstActor("goal");
+            //Texture2D goalTexture = Raylib.LoadTexture(goal.texturePath);
+            
+
+            //start timere
             MyTimer frameCount = new MyTimer();
             
             //gameloop
             while (videoService.IsWindowOpen())
             {
-                //Raylib.BeginDrawing();
-                //Raylib_cs raylib = new Raylib_cs();
-                //VideoService.Image DinoImage = LoadImage("DinoGame2_Complete/images/CompleteDino.png");
-                //Texture2D player = Raylib.LoadTexture("DinoGame2_Complete/images/CompleteDino.png");
-                //Raylib.DrawTexture(player, Constants.DinoSpawn.GetX(), Constants.DinoSpawn.GetY(), Raylib_cs.Color.WHITE);
-                // UnloadTexture(player);
+                
                 ExecuteActions("input", cast, script);
                 ExecuteActions("update", cast, script);
                 ExecuteActions("output", cast, script);
             }
             videoService.CloseWindow();
-            Raylib.UnloadImage(DinoImage);
-            Raylib.UnloadImage(EnemyImage);
-            Raylib.UnloadImage(GoalImage);
+            Raylib.CloseAudioDevice();
+            Raylib.UnloadTexture(dino.Texture);
+            //Raylib.UnloadTexture(playerLeft);
+            Raylib.UnloadTexture(enemy.Texture);
+            //Raylib.UnloadTexture(enemyLeft);
+            Raylib.UnloadTexture(goal.Texture);
+
+            
+            
         }
         /// <summary>
         /// Calls execute for each action in the given group.
