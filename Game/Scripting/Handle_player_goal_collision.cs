@@ -8,13 +8,12 @@ using Raylib_cs;
 namespace DinoGame2.Game.Scripting
 {
     /// <summary>
-    /// <para>An update action that handles interactions between the actors.</para>
+    /// <para></para>
     /// <para>
-    /// The responsibility of HandleCollisionsAction is to handle the situation when the dino 
-    /// collides with the enemy, or the dino collides with the goal, or the game is over.
+    /// 
     /// </para>
     /// </summary>
-    public class Handle_collision : Action
+    public class Handle_player_goal_collision : Action
     {
         public bool isGameOver = false;
         public bool isPlayerExploding;
@@ -22,7 +21,7 @@ namespace DinoGame2.Game.Scripting
         /// <summary>
         /// Constructs a new instance of Handle_collision.
         /// </summary>
-        public Handle_collision()
+        public Handle_player_goal_collision()
         {
             isPlayerExploding = false;
         }
@@ -32,9 +31,7 @@ namespace DinoGame2.Game.Scripting
         {
             if (isGameOver == false)
             {
-                HandleEnemyCollisions(cast);
                 HandleGoalCollisions(cast);
-                HandleGameOver(cast);
             }
             
             
@@ -90,87 +87,5 @@ namespace DinoGame2.Game.Scripting
             }
         }
 
-        //code for if the player touches an enemy
-        private void HandleEnemyCollisions(Cast cast)
-        {
-            List<Actor> enemies = cast.GetActors("enemy");
-            Dino dino = (Dino)cast.GetFirstActor("dino");
-            Score score = (Score)cast.GetFirstActor("score");
-            Goal goal = (Goal)cast.GetFirstActor("goal");
-            List<Actor> dinos = cast.GetActors("dino");
-            string yeah = score.GetText();
-            
-
-            allEnemiesHitboxList.Clear();
-            foreach (Enemy enemy in enemies)
-            {
-                enemy.SetHitboxList();
-                allEnemiesHitboxList.Add(enemy.GetHitboxList());
-            }
-
-            dino.SetHitboxList();
-            foreach (Point DinoPoint in dino.dinoHitboxList)
-            {
-                foreach (Enemy enemy in enemies)
-                {
-                    enemy.SetHitboxList();
-                    Point enemyPosition_TopLeft = enemy.enemyHitboxList[0];
-                    Point enemyPosition_BottomRight = enemy.enemyHitboxList[3];
-                    int enemyPosition_TopLeftX = enemyPosition_TopLeft.GetX();
-                    int enemyPosition_TopLeftY = enemyPosition_TopLeft.GetY();
-                    int enemyPosition_BottomRightX = enemyPosition_BottomRight.GetX();
-                    int enemyPosition_BottomRightY = enemyPosition_BottomRight.GetY();
-
-                    
-                    int dinoX = DinoPoint.GetX();
-                    int dinoY = DinoPoint.GetY();
-                    
-                    // Checks to see if any of the corners of the dino hitbox are inside the enemy.
-                    if ((Enumerable.Range(enemyPosition_TopLeftX, enemy.GetFontSize() + 1).Contains(dinoX)) && (Enumerable.Range(enemyPosition_TopLeftY, enemy.GetFontSize() + 1).Contains(dinoY)))
-                    {
-                        isGameOver = true;
-                        break;
-                    }
-                }
-            }
-        }
-
-        private void HandleGameOver(Cast cast)
-        {
-            Actor score = cast.GetFirstActor("score");
-            int BannerAsINT = int.Parse(score.GetText());
-
-            if (isGameOver == true)
-            {
-                //make a game over screen and display the final score
-                Actor GameOverMessage = new Actor();
-                GameOverMessage.SetText($"Game Over \n Score: {BannerAsINT}");
-                GameOverMessage.SetPosition(Constants.GameOverMessagePosition);
-                GameOverMessage.SetColor(Constants.WHITE);
-                GameOverMessage.SetFontSize(Constants.DinoAndEnemyFont_Size);
-                cast.AddActor("messages", GameOverMessage);
-                
-                
-                
-            
-            
-                //Raylib.ClearBackground(Raylib_cs.Color.BLACK);
-                //Raylib.DrawText(GameOverMessage, Constants.MAX_X / 2, Constants.MAX_Y / 2, Constants.FONT_SIZE, Raylib_cs.Color.WHITE);
-
-            
-
-                //for now we'll just delete the dino if it touches a bad guy. later I'd like to make a class to make it so you can start a new game.
-
-                // not sure if this will work, but it is just deleting everything in the cast resembles a dino
-                List<Actor> dinos = cast.GetActors("dino");
-                foreach (Actor player in dinos)
-                {
-                    cast.RemoveActor("dino", player);
-                }
-
-            }
-        }
-
-    
     }
 }

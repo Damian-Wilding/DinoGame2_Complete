@@ -8,10 +8,9 @@ using Raylib_cs;
 namespace DinoGame2.Game.Scripting
 {
     /// <summary>
-    /// <para>An update action that handles interactions between the actors.</para>
+    /// <para></para>
     /// <para>
-    /// The responsibility of HandleCollisionsAction is to handle the situation when the dino 
-    /// collides with the enemy, or the dino collides with the goal, or the game is over.
+    /// 
     /// </para>
     /// </summary>
     public class Handle_player_enemy_collision : Action
@@ -33,61 +32,10 @@ namespace DinoGame2.Game.Scripting
             if (isGameOver == false)
             {
                 HandleEnemyCollisions(cast);
-                HandleGoalCollisions(cast);
                 HandleGameOver(cast);
             }
             
             
-        }
-
-        /// <summary>
-        /// Updates the score and moves the player if the Dino touches the goal.
-        /// </summary>
-        /// <param name="cast">The cast of actors.</param>
-        private void HandleGoalCollisions(Cast cast)
-        {
-            List<Actor> enemies = cast.GetActors("enemy");
-            Dino dino = (Dino)cast.GetFirstActor("dino");
-            Score score = (Score)cast.GetFirstActor("score");
-            Goal goal = (Goal)cast.GetFirstActor("goal");
-            
-            
-            // checks to see if the dino is touching the goal
-            if (dino.GetPosition().GetY() <= goal.GoalsHitBoxY)
-            {
-                
-                // removes all enemies from the screen
-                foreach (Enemy enemy in enemies)
-                {
-                    cast.RemoveActor("enemy", enemy);
-                }
-
-                // Turn the text of score into an int
-                string scoreString = score.GetText(); 
-                int ScoreAsINT = Int32.Parse(scoreString);
-                System.Console.WriteLine(ScoreAsINT);
-
-                // add the goal point(s) to that int
-                ScoreAsINT += goal.points;
-
-                // ads in as many enemies as there are points in the game
-                for (int i = 1; i <= ScoreAsINT + 1; i++)
-                {
-                    cast.AddActor("enemy", new Enemy());
-                }
-
-                // turn it back into a string
-                string NewScore = ScoreAsINT.ToString();
-
-                // set that new score as the score to be displayed
-                score.SetText(NewScore);
-
-                //cast.RemoveActor("dino", dino);
-                //cast.AddActor("dino", new Dino());
-                // moves the dino back to its spawn point
-                dino.SetPosition(Constants.DinoSpawn);
-                
-            }
         }
 
         //code for if the player touches an enemy
@@ -100,7 +48,7 @@ namespace DinoGame2.Game.Scripting
             List<Actor> dinos = cast.GetActors("dino");
             string yeah = score.GetText();
             
-
+            //all this code is checking if there is a player to enemy collision
             allEnemiesHitboxList.Clear();
             foreach (Enemy enemy in enemies)
             {
@@ -128,6 +76,7 @@ namespace DinoGame2.Game.Scripting
                     // Checks to see if any of the corners of the dino hitbox are inside the enemy.
                     if ((Enumerable.Range(enemyPosition_TopLeftX, enemy.GetFontSize() + 1).Contains(dinoX)) && (Enumerable.Range(enemyPosition_TopLeftY, enemy.GetFontSize() + 1).Contains(dinoY)))
                     {
+                        //code for what to do if you hit an enemy
                         isGameOver = true;
                         break;
                     }
@@ -146,7 +95,7 @@ namespace DinoGame2.Game.Scripting
                 Actor GameOverMessage = new Actor();
                 GameOverMessage.SetText($"Game Over \n Score: {BannerAsINT}");
                 GameOverMessage.SetPosition(Constants.GameOverMessagePosition);
-                GameOverMessage.SetColor(Constants.WHITE);
+                GameOverMessage.SetColor(Constants.BLACK);
                 GameOverMessage.SetFontSize(Constants.DinoAndEnemyFont_Size);
                 cast.AddActor("messages", GameOverMessage);
                 
@@ -154,8 +103,7 @@ namespace DinoGame2.Game.Scripting
                 
             
             
-                //Raylib.ClearBackground(Raylib_cs.Color.BLACK);
-                //Raylib.DrawText(GameOverMessage, Constants.MAX_X / 2, Constants.MAX_Y / 2, Constants.FONT_SIZE, Raylib_cs.Color.WHITE);
+                
 
             
 

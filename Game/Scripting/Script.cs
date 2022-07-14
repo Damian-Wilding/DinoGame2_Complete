@@ -12,7 +12,7 @@ namespace DinoGame2.Game.Scripting
     /// </summary>
     public class Script
     {
-        private Dictionary<string, List<Action>> actions = new Dictionary<string, List<Action>>();
+        public Dictionary<string, List<Action>> actions = new Dictionary<string, List<Action>>();
 
         /// <summary>
         /// Constructs a new instance of Script.

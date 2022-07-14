@@ -26,6 +26,7 @@ namespace DinoGame2.Game
             //cast.AddActor("enemy", new Enemy());
             cast.AddActor("score", new Score());
             cast.AddActor("goal", new Goal());
+            cast.AddActor("background", new Background());
 
             KeyboardService keyboardService = new KeyboardService();
             VideoService videoService = new VideoService(true);
@@ -33,14 +34,17 @@ namespace DinoGame2.Game
 
             //creating the script
             Script script = new Script();
+
+            Handle_player_enemy_collision handle_player_enemy_collision = new Handle_player_enemy_collision();
+
             script.AddAction("input", new Control_dino_action(keyboardService));
-            script.AddAction("update", new Handle_player_enemy_collision());
+            script.AddAction("update", handle_player_enemy_collision);
             script.AddAction("update", new Handle_player_goal_collision());
             script.AddAction("update", new Movement());
             script.AddAction("output", new Draw_actors(videoService));
             
             //start the game
-            Director director = new Director(videoService);
+            Director director = new Director(videoService, handle_player_enemy_collision);
             director.StartGame(cast, script);
         }
     }

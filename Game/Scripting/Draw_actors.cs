@@ -27,9 +27,7 @@ namespace DinoGame2.Game.Scripting
         public Draw_actors(VideoService videoService)
         {
             this.videoService = videoService;
-            //this.isGameOver = Handle_collision.isGameOver;
-            //this.frameCount = DinoGame2.Game.Directing.Director.frameCount;
-            //this.explosion = Raylib.LoadTexture("images/explosion_sprite_sheet_no_green.png");
+            
         }
 
         /// <inheritdoc/>
@@ -40,6 +38,7 @@ namespace DinoGame2.Game.Scripting
             Score score = (Score)cast.GetFirstActor("score");
             Goal goal = (Goal)cast.GetFirstActor("goal");
             List<Actor> enemies = cast.GetActors("enemy");
+            Background background = (Background)cast.GetFirstActor("background");
 
             //wipes off the screen to prepare for the new drawing
             videoService.ClearBuffer();
@@ -51,14 +50,14 @@ namespace DinoGame2.Game.Scripting
             string enemyImageRight = enemy.ActorImage;
             Texture2D badGuyRight = Raylib.LoadTexture(enemyImageRight);
             Texture2D badGuyLeft = Raylib.LoadTexture(enemyImageLeft);
-            string grassPath = "images/grass2.png";
-            Texture2D grass = Raylib.LoadTexture(grassPath);
+            //string grassPath = "images/grass2.png";
+            //Texture2D grass = Raylib.LoadTexture(grassPath);
 
             //draws grass (you should touch some dude)
-            Raylib.DrawTexture(grass, 0, 0, Raylib_cs.Color.WHITE);
-            Raylib.DrawTexture(grass, 0, 320, Raylib_cs.Color.WHITE);
-            Raylib.DrawTexture(grass, 704, 0, Raylib_cs.Color.WHITE);
-            Raylib.DrawTexture(grass, 704, 320, Raylib_cs.Color.WHITE);
+            Raylib.DrawTexture(background.Texture, 0, 0, Raylib_cs.Color.WHITE);
+            Raylib.DrawTexture(background.Texture, 0, 320, Raylib_cs.Color.WHITE);
+            Raylib.DrawTexture(background.Texture, 704, 0, Raylib_cs.Color.WHITE);
+            Raylib.DrawTexture(background.Texture, 704, 320, Raylib_cs.Color.WHITE);
             
             //draws the goal (the brick blocks)
             string goalImage = goal.ActorImage;

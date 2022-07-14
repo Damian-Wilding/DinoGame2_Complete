@@ -20,14 +20,17 @@ namespace DinoGame2.Game.Directing
         //public Image GoalImage;
         private VideoService videoService;
         public MyTimer timer;
+        Handle_player_enemy_collision handle_Player_Enemy_Collision;
+        //Texture2D backgroundImage = new Texture2D();
 
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
         /// </summary>
         /// <param name="videoService">The given VideoService.</param>
-        public Director(VideoService videoService)
+        public Director(VideoService videoService, Handle_player_enemy_collision handle_player_enemy_collision)
         {
             this.videoService = videoService;
+            this.handle_Player_Enemy_Collision = handle_player_enemy_collision;
         }
 
         /// <summary>
@@ -51,6 +54,8 @@ namespace DinoGame2.Game.Directing
             
 
             //load all the textures that will be used in the game.
+
+            Background background = (Background)cast.GetFirstActor("background");
             Dino dino = (Dino)cast.GetFirstActor("dino");
             //Texture2D player = dino.GetTexture();
             //Texture2D playerLeft = Raylib.LoadTexture(dino.ActorImageLeftText);
@@ -60,15 +65,19 @@ namespace DinoGame2.Game.Directing
             Goal goal = (Goal)cast.GetFirstActor("goal");
             //Texture2D goalTexture = Raylib.LoadTexture(goal.texturePath);
             
+            
 
-            //start timere
+            //start timer
             MyTimer frameCount = new MyTimer();
             
             //gameloop
             while (videoService.IsWindowOpen())
             {
-                
-                ExecuteActions("input", cast, script);
+                // only execute input commands if the game isn't over
+                while (handle_Player_Enemy_Collision.isGameOver == false)
+                {
+                    ExecuteActions("input", cast, script);
+                }
                 ExecuteActions("update", cast, script);
                 ExecuteActions("output", cast, script);
             }
@@ -79,6 +88,7 @@ namespace DinoGame2.Game.Directing
             Raylib.UnloadTexture(enemy.Texture);
             //Raylib.UnloadTexture(enemyLeft);
             Raylib.UnloadTexture(goal.Texture);
+            Raylib.UnloadTexture(background.Texture);
 
             
             
