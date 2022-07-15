@@ -18,9 +18,13 @@ namespace DinoGame2.Game
         /// <param name="args">The given arguments.</param>
         static void Main(string[] args)
         {
+            KeyboardService keyboardService = new KeyboardService();
+            VideoService videoService = new VideoService(false);
+            videoService.OpenWindow();
+
             //creating the cast
             Cast cast = new Cast();
-            Cast CastImages = new Cast();
+            Cast CastTextures = new Cast();
             cast.AddActor("dino", new Dino());
             cast.AddActor("enemy", new Enemy());
             //cast.AddActor("enemy", new Enemy());
@@ -28,8 +32,7 @@ namespace DinoGame2.Game
             cast.AddActor("goal", new Goal());
             cast.AddActor("background", new Background());
 
-            KeyboardService keyboardService = new KeyboardService();
-            VideoService videoService = new VideoService(true);
+            
             //MyTimer frameCount = new MyTimer();
 
             //creating the script

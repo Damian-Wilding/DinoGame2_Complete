@@ -61,11 +61,11 @@ namespace DinoGame2.Game.Scripting
             Raylib.DrawTexture(goal.Texture, 0, goal.GoalsHitBoxY - 128, Raylib_cs.Color.WHITE);
 
             //draw the score and the black background behind it
-            Image ScoreBackgroundImage = Raylib.GenImageColor(30, 20, Raylib_cs.Color.BLACK);
+            //Image ScoreBackgroundImage = Raylib.GenImageColor(30, 20, Raylib_cs.Color.BLACK);
             
-            Texture2D ScoreBackground = Raylib.LoadTextureFromImage(ScoreBackgroundImage);
+            //Texture2D ScoreBackground = Raylib.LoadTextureFromImage(ScoreBackgroundImage);
             
-            Raylib.DrawTexture(ScoreBackground, 0, 0, Raylib_cs.Color.BLACK);
+            Raylib.DrawTexture(score.scoreBackgroundTexture, 0, 0, Raylib_cs.Color.BLACK);
             videoService.DrawActor(score);
             
             //draws the dino player
@@ -91,8 +91,8 @@ namespace DinoGame2.Game.Scripting
             Raylib.DrawTextureRec(explosion, new Rectangle(450, 0, 45, 45), new Vector2(300, 300), Raylib_cs.Color.WHITE);
             
             videoService.FlushBuffer();
-            Raylib.UnloadImage(ScoreBackgroundImage);
-            Raylib.UnloadTexture(ScoreBackground);
+            //Raylib.UnloadImage(ScoreBackgroundImage);
+            //Raylib.UnloadTexture(ScoreBackground);
             //frameCount.TimerUpdate();
         }
     }

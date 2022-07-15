@@ -20,7 +20,7 @@ namespace DinoGame2.Game.Directing
         //public Image GoalImage;
         private VideoService videoService;
         //public MyTimer timer;
-        Handle_player_enemy_collision handle_Player_Enemy_Collision;
+        public Handle_player_enemy_collision handle_Player_Enemy_Collision;
         //Texture2D backgroundImage = new Texture2D();
 
         /// <summary>
@@ -42,7 +42,6 @@ namespace DinoGame2.Game.Directing
         {
             //Raylib.InitAudioDevice();
             
-            videoService.OpenWindow();
 
             SoundService soundService = new SoundService();
 
@@ -57,13 +56,9 @@ namespace DinoGame2.Game.Directing
 
             Background background = (Background)cast.GetFirstActor("background");
             Dino dino = (Dino)cast.GetFirstActor("dino");
-            //Texture2D player = dino.GetTexture();
-            //Texture2D playerLeft = Raylib.LoadTexture(dino.ActorImageLeftText);
             Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
-            //Texture2D enemyRight = Raylib.LoadTexture(enemy.texturePath);
-            //Texture2D enemyLeft = Raylib.LoadTexture(enemy.texturePathLeft);
             Goal goal = (Goal)cast.GetFirstActor("goal");
-            //Texture2D goalTexture = Raylib.LoadTexture(goal.texturePath);
+            Score score = (Score)cast.GetFirstActor("score");
             
             
 
@@ -74,7 +69,7 @@ namespace DinoGame2.Game.Directing
             while (videoService.IsWindowOpen())
             {
                 // only execute input commands if the game isn't over
-                while (handle_Player_Enemy_Collision.isGameOver == false)
+                if (handle_Player_Enemy_Collision.isGameOver == false)
                 {
                     ExecuteActions("input", cast, script);
                 }
@@ -89,6 +84,8 @@ namespace DinoGame2.Game.Directing
             //Raylib.UnloadTexture(enemyLeft);
             Raylib.UnloadTexture(goal.Texture);
             Raylib.UnloadTexture(background.Texture);
+            Raylib.UnloadImage(score.scoreBackgroundImage);
+            Raylib.UnloadTexture(score.scoreBackgroundTexture);
 
             
             

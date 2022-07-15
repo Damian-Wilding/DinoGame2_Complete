@@ -79,8 +79,6 @@ namespace DinoGame2.Game.Scripting
                 // set that new score as the score to be displayed
                 score.SetText(NewScore);
 
-                //cast.RemoveActor("dino", dino);
-                //cast.AddActor("dino", new Dino());
                 // moves the dino back to its spawn point
                 dino.SetPosition(Constants.DinoSpawn);
                 

@@ -1,4 +1,5 @@
 using System;
+using Raylib_cs;
 
 
 namespace DinoGame2.Game.Casting
@@ -16,13 +17,17 @@ namespace DinoGame2.Game.Casting
         private Color color = Constants.WHITE;
         public new string text = "0";
         private Point position = Constants.scorePosition;
+        public Texture2D scoreBackgroundTexture = new Texture2D();
+        public Image scoreBackgroundImage = new Image();
 
         /// <summary>
-        /// Constructs a new instance of an Food.
+        /// Constructs a new instance of an Score.
         /// </summary>
         public Score()
         {
             //AddPoints(0);     idk what this even is or if its needed
+            this.scoreBackgroundImage = Raylib.GenImageColor(30, 20, Raylib_cs.Color.BLACK);
+            this.scoreBackgroundTexture = Raylib.LoadTextureFromImage(this.scoreBackgroundImage);
         }
 
         /// <summary>

@@ -30,7 +30,7 @@ namespace DinoGame2.Game.Casting
         {
             PrepareBody();
             this.Texture = Raylib.LoadTexture(this.ActorImageText);
-            Raylib.LoadTexture(this.ActorImageLeftText);
+            //Raylib.LoadTexture(this.ActorImageLeftText);
         }
 
         /// <summary>
@@ -164,9 +164,9 @@ namespace DinoGame2.Game.Casting
         ///<summary>
         /// sets the dinos texture
         ///</summary>
-        public void SetTexture(string path)
-        {
-            this.Texture = Raylib.LoadTexture(path);
-        }
+        //public void SetTexture(string path)
+        //{
+        //    this.Texture = Raylib.LoadTexture(path);
+        //}
     }
 }
