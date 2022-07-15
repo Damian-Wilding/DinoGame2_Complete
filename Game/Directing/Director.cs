@@ -72,9 +72,13 @@ namespace DinoGame2.Game.Directing
                 if (handle_Player_Enemy_Collision.isGameOver == false)
                 {
                     ExecuteActions("input", cast, script);
+                    ExecuteActions("update", cast, script);
+                    ExecuteActions("output", cast, script);
                 }
-                ExecuteActions("update", cast, script);
-                ExecuteActions("output", cast, script);
+                //what to do if the player dies
+                ///ExecuteActions("inputInGameOver", cast, script);
+                ///ExecuteActions("updateInGameOver", cast, script);
+                ///ExecuteActions("outputInGameOver", cast, script);
             }
             videoService.CloseWindow();
             Raylib.CloseAudioDevice();

@@ -91,8 +91,6 @@ namespace DinoGame2.Game.Scripting
             Raylib.DrawTextureRec(explosion, new Rectangle(450, 0, 45, 45), new Vector2(300, 300), Raylib_cs.Color.WHITE);
             
             videoService.FlushBuffer();
-            //Raylib.UnloadImage(ScoreBackgroundImage);
-            //Raylib.UnloadTexture(ScoreBackground);
             //frameCount.TimerUpdate();
         }
     }

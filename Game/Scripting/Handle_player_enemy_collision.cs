@@ -38,7 +38,7 @@ namespace DinoGame2.Game.Scripting
             
         }
 
-        //code for if the player touches an enemy
+        //code that checks if player touches an enemy and for what to do if that happens
         private void HandleEnemyCollisions(Cast cast)
         {
             List<Actor> enemies = cast.GetActors("enemy");
@@ -107,9 +107,7 @@ namespace DinoGame2.Game.Scripting
 
             
 
-                //for now we'll just delete the dino if it touches a bad guy. later I'd like to make a class to make it so you can start a new game.
-
-                // not sure if this will work, but it is just deleting everything in the cast resembles a dino
+                //for now we'll just delete the dino if it touches a bad guy. later I'd like to make a class to make it so you can start a new game
                 List<Actor> dinos = cast.GetActors("dino");
                 foreach (Actor player in dinos)
                 {

@@ -45,7 +45,9 @@ namespace DinoGame2.Game
             script.AddAction("update", new Handle_player_goal_collision());
             script.AddAction("update", new Movement());
             script.AddAction("output", new Draw_actors(videoService));
-            
+            ///script.AddAction("inputInGameOver", new Input_for_start_new_game());
+            ///script.AddAction("updateInGameOver", new Update_enemies_if_player_is_dead());
+            ///script.AddAction("outputInGameOver", new Draw_actors_if_player_is_dead());
             //start the game
             Director director = new Director(videoService, handle_player_enemy_collision);
             director.StartGame(cast, script);
