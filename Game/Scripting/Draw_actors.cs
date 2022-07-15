@@ -76,11 +76,11 @@ namespace DinoGame2.Game.Scripting
             {
                 if (enemy2.GetVelocity().Equals(new Point(1,0)))
                 {
-                    Raylib.DrawTexture(enemy.Texture, enemy2.GetPosition().GetX(), enemy2.GetPosition().GetY(), Raylib_cs.Color.WHITE);
+                    Raylib.DrawTexture(enemy2.Texture, enemy2.GetPosition().GetX(), enemy2.GetPosition().GetY(), Raylib_cs.Color.WHITE);
                 }
                 else
                 {
-                    Raylib.DrawTexture(enemy.Texture, enemy2.GetPosition().GetX(), enemy2.GetPosition().GetY(), Raylib_cs.Color.WHITE);    
+                    Raylib.DrawTexture(enemy2.Texture, enemy2.GetPosition().GetX(), enemy2.GetPosition().GetY(), Raylib_cs.Color.WHITE);    
                 }
                 
             }

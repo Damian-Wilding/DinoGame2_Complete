@@ -78,10 +78,10 @@ namespace DinoGame2.Game.Directing
             }
             videoService.CloseWindow();
             Raylib.CloseAudioDevice();
-            Raylib.UnloadTexture(dino.Texture);
-            //Raylib.UnloadTexture(playerLeft);
-            Raylib.UnloadTexture(enemy.Texture);
-            //Raylib.UnloadTexture(enemyLeft);
+            Raylib.UnloadTexture(dino.TextureR);
+            Raylib.UnloadTexture(dino.TextureL);
+            Raylib.UnloadTexture(enemy.TextureR);
+            Raylib.UnloadTexture(enemy.TextureL);
             Raylib.UnloadTexture(goal.Texture);
             Raylib.UnloadTexture(background.Texture);
             Raylib.UnloadImage(score.scoreBackgroundImage);

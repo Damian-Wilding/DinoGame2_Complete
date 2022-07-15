@@ -18,10 +18,13 @@ namespace DinoGame2.Game.Casting
         public string texturePath = "images/evilDino45.png";
         public string texturePathLeft = "images/evilDino45Left.png";
         public Texture2D Texture = new Texture2D();
-        //public Texture2D TextureL = new Texture2D();
+        public Texture2D TextureL = new Texture2D();
+        public Texture2D TextureR = new Texture2D();
 
         public Enemy()
         {
+            this.TextureR = Raylib.LoadTexture(this.texturePath); 
+            this.TextureL = Raylib.LoadTexture(this.texturePathLeft);
             SetupEnemy();
             
             
@@ -32,14 +35,17 @@ namespace DinoGame2.Game.Casting
         /// </summary>
         public override void MoveNext()
         {
+            
             Point position = new Point(this.GetPosition().GetX(), this.GetPosition().GetY());
             if (this.GetPosition().GetX() == 0)
             {
+                this.Texture = this.TextureR;
                 this.velocity = new Point (1, 0);
                 this.SetVelocity(new Point (1, 0));
             }
             if (this.GetPosition().GetX() == Constants.MAX_X - this.fontSize)
             {
+                this.Texture = this.TextureL;
                 this.velocity = new Point (-1, 0);
                 this.SetVelocity(new Point(-1, 0));
             }
@@ -59,13 +65,13 @@ namespace DinoGame2.Game.Casting
             if (direction == 1)
             {
                 velocity = new Point (1,0);
-                this.Texture = Raylib.LoadTexture(this.ActorImage);
+                this.Texture = this.TextureR;
             }
             //code for moving to the left
             else if (direction == 2)
             {
                 velocity = new Point (-1,0);
-                this.Texture = Raylib.LoadTexture(this.ActorImageLeft);
+                this.Texture = this.TextureL;
             }
             return velocity;
         }

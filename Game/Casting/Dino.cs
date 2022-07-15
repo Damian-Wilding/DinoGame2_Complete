@@ -21,7 +21,8 @@ namespace DinoGame2.Game.Casting
         public string ActorImageLeftText = "images/dinoComplete45Left.png";
         public string texturePath = "images/dinoComplete45.png";
         public Texture2D Texture = new Texture2D();
-        
+        public Texture2D TextureR = new Texture2D();
+        public Texture2D TextureL = new Texture2D();
 
         /// <summary>
         /// Constructs a new instance of a Dino.
@@ -29,8 +30,9 @@ namespace DinoGame2.Game.Casting
         public Dino()
         {
             PrepareBody();
-            this.Texture = Raylib.LoadTexture(this.ActorImageText);
-            //Raylib.LoadTexture(this.ActorImageLeftText);
+            this.TextureR = Raylib.LoadTexture(this.ActorImageText);
+            this.TextureL = Raylib.LoadTexture(this.ActorImageLeftText);
+            this.Texture = TextureR;
         }
 
         /// <summary>
@@ -122,11 +124,11 @@ namespace DinoGame2.Game.Casting
             this.position = new Point(x, y);
             if (velocity.GetX() < 0)
             {
-                this.ActorImageText = "images/dinoComplete45Left.png";
+                this.Texture = this.TextureL;
             }
             if (velocity.GetX() > 0)
             {
-                this.ActorImageText = "images/dinoComplete45.png";
+                this.Texture = this.TextureR;
             }
         }
 
@@ -164,9 +166,9 @@ namespace DinoGame2.Game.Casting
         ///<summary>
         /// sets the dinos texture
         ///</summary>
-        //public void SetTexture(string path)
-        //{
-        //    this.Texture = Raylib.LoadTexture(path);
-        //}
+        public void SetTexture(string path)
+        {
+            this.Texture = Raylib.LoadTexture(path);
+        }
     }
 }
