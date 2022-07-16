@@ -45,8 +45,8 @@ namespace DinoGame2.Game.Scripting
             videoService.ClearBuffer();
             
             //sets up all the textures to be drawn
-            string enemyImageLeft = enemy.ActorImageLeft;
-            string enemyImageRight = enemy.ActorImage;
+            //string enemyImageLeft = enemy.ActorImageLeft;
+            //string enemyImageRight = enemy.ActorImage;
             //Texture2D badGuyRight = Raylib.LoadTexture(enemyImageRight);
             //Texture2D badGuyLeft = Raylib.LoadTexture(enemyImageLeft);
             

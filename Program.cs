@@ -39,17 +39,19 @@ namespace DinoGame2.Game
             Script script = new Script();
 
             Handle_player_enemy_collision handle_player_enemy_collision = new Handle_player_enemy_collision();
+            Input_for_start_new_game input_For_Start_New_Game = new Input_for_start_new_game(keyboardService);
 
             script.AddAction("input", new Control_dino_action(keyboardService));
             script.AddAction("update", handle_player_enemy_collision);
             script.AddAction("update", new Handle_player_goal_collision());
             script.AddAction("update", new Movement());
             script.AddAction("output", new Draw_actors(videoService));
-            ///script.AddAction("inputInGameOver", new Input_for_start_new_game());
-            ///script.AddAction("updateInGameOver", new Update_enemies_if_player_is_dead());
-            ///script.AddAction("outputInGameOver", new Draw_actors_if_player_is_dead());
+            script.AddAction("inputInGameOver", input_For_Start_New_Game);
+            script.AddAction("updateInGameOver", new Movement());
+            script.AddAction("outputInGameOver", new Draw_actors_if_player_is_dead(videoService));
+            
             //start the game
-            Director director = new Director(videoService, handle_player_enemy_collision);
+            Director director = new Director(videoService, keyboardService, handle_player_enemy_collision, input_For_Start_New_Game);
             director.StartGame(cast, script);
         }
     }

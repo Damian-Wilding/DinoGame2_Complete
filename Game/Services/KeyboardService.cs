@@ -25,7 +25,8 @@ namespace DinoGame2.Game.Services
             keys["left"] = KeyboardKey.KEY_LEFT;
             keys["down"] = KeyboardKey.KEY_DOWN;
             keys["right"] = KeyboardKey.KEY_RIGHT;
-            keys["shoot"] = KeyboardKey.KEY_SPACE;
+            keys["space"] = KeyboardKey.KEY_SPACE;
+            keys["enter"] = KeyboardKey.KEY_ENTER;
         }
 
         /// <summary>

@@ -15,22 +15,21 @@ namespace DinoGame2.Game.Directing
 
     public class Director
     {
-        //public Image DinoImage;
-        //public Image EnemyImage;
-        //public Image GoalImage;
         private VideoService videoService;
-        //public MyTimer timer;
         public Handle_player_enemy_collision handle_Player_Enemy_Collision;
-        //Texture2D backgroundImage = new Texture2D();
+        public Input_for_start_new_game input_For_Start_New_Game;
+        public KeyboardService KeyboardService;
 
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
         /// </summary>
         /// <param name="videoService">The given VideoService.</param>
-        public Director(VideoService videoService, Handle_player_enemy_collision handle_player_enemy_collision)
+        public Director(VideoService videoService, KeyboardService keyboardService, Handle_player_enemy_collision handle_player_enemy_collision, Input_for_start_new_game input_For_Start_New_Game)
         {
             this.videoService = videoService;
             this.handle_Player_Enemy_Collision = handle_player_enemy_collision;
+            this.input_For_Start_New_Game = input_For_Start_New_Game;
+            this.KeyboardService = keyboardService;
         }
 
         /// <summary>
@@ -40,8 +39,6 @@ namespace DinoGame2.Game.Directing
         /// <param name="script">The given script.</param>
         public void StartGame(Cast cast, Script script)
         {
-            //Raylib.InitAudioDevice();
-            
 
             SoundService soundService = new SoundService();
 
@@ -75,11 +72,20 @@ namespace DinoGame2.Game.Directing
                     ExecuteActions("update", cast, script);
                     ExecuteActions("output", cast, script);
                 }
-                //what to do if the player dies
-                ///ExecuteActions("inputInGameOver", cast, script);
-                ///ExecuteActions("updateInGameOver", cast, script);
-                ///ExecuteActions("outputInGameOver", cast, script);
-            }
+                else
+                {
+                    while (input_For_Start_New_Game.IsNewGameStarting == false)
+                    {
+                        //what to do if the player dies
+                        ExecuteActions("inputInGameOver", cast, script);
+                        ExecuteActions("updateInGameOver", cast, script);
+                        ExecuteActions("outputInGameOver", cast, script);
+                    }
+                    
+                    //start a new game now
+
+                }
+            }   
             videoService.CloseWindow();
             Raylib.CloseAudioDevice();
             Raylib.UnloadTexture(dino.TextureR);

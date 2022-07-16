@@ -108,11 +108,11 @@ namespace DinoGame2.Game.Scripting
             
 
                 //for now we'll just delete the dino if it touches a bad guy. later I'd like to make a class to make it so you can start a new game
-                List<Actor> dinos = cast.GetActors("dino");
-                foreach (Actor player in dinos)
-                {
-                    cast.RemoveActor("dino", player);
-                }
+                /////////List<Actor> dinos = cast.GetActors("dino");
+                /////////foreach (Actor player in dinos)
+                /////////{
+                /////////    cast.RemoveActor("dino", player);
+                /////////}
 
             }
         }
