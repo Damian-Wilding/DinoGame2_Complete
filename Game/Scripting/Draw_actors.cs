@@ -88,7 +88,7 @@ namespace DinoGame2.Game.Scripting
             //test draw explosion
 
             //this.explosion = Raylib.LoadTexture("images/explosion_sprite_sheet_no_green.png");
-            Raylib.DrawTextureRec(explosion, new Rectangle(450, 0, 45, 45), new Vector2(300, 300), Raylib_cs.Color.WHITE);
+            //Raylib.DrawTextureRec(explosion, new Rectangle(450, 0, 45, 45), new Vector2(300, 300), Raylib_cs.Color.WHITE);
             
             videoService.FlushBuffer();
             //frameCount.TimerUpdate();

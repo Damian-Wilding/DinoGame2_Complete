@@ -93,27 +93,12 @@ namespace DinoGame2.Game.Scripting
             {
                 //make a game over screen and display the final score
                 Actor GameOverMessage = new Actor();
-                GameOverMessage.SetText($"Game Over \n Score: {BannerAsINT}");
+                GameOverMessage.SetText($"Game Over \n Score: {BannerAsINT} \n Press ENTER to close the game");
                 GameOverMessage.SetPosition(Constants.GameOverMessagePosition);
                 GameOverMessage.SetColor(Constants.BLACK);
                 GameOverMessage.SetFontSize(Constants.DinoAndEnemyFont_Size);
                 cast.AddActor("messages", GameOverMessage);
                 
-                
-                
-            
-            
-                
-
-            
-
-                //for now we'll just delete the dino if it touches a bad guy. later I'd like to make a class to make it so you can start a new game
-                /////////List<Actor> dinos = cast.GetActors("dino");
-                /////////foreach (Actor player in dinos)
-                /////////{
-                /////////    cast.RemoveActor("dino", player);
-                /////////}
-
             }
         }
 

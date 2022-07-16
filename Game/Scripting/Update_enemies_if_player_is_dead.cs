@@ -12,9 +12,16 @@ namespace DinoGame2.Game.Scripting
 
         public void Execute(Cast cast, Script script)
         {
-            List<Actor> enemies = cast.GetActors("enemy");
+            //List<Actor> actors = cast.GetAllActors();
+            List<Actor> enemies = cast.GetActors("enemies");
+            foreach (Actor actor in enemies)
+            {
+                
+                actor.MoveNext();
+                
+            }
 
-            //foreach 
+        
         }
     }
 }

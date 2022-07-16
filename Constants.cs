@@ -25,8 +25,7 @@ namespace DinoGame2.Game
         public static Point DinoSpawn = new Point (MAX_X / 2, MAX_Y - DinoAndEnemyFont_Size);
         public static int GoalPoints = 1;
         public static Point GoalPosition = new Point(0, FONT_SIZE);
-        public static Point GameOverMessagePosition = new Point (MAX_X / 2, MAX_Y / 2);
-        // (Might use this later, but I dont think it will be needed) public static string GameOverMessage = "Game Over"
+        public static Point GameOverMessagePosition = new Point (100, MAX_Y / 2);
         public static int Enemy_Top_Row = GoalPosition.GetY() * (DinoAndEnemyFont_Size / FONT_SIZE); //30
         public static int Enemy_Bottom_Row = ROWS * FONT_SIZE - ((DinoAndEnemyFont_Size) * 3); // 40 * 15 - 
 
