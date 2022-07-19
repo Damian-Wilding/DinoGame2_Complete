@@ -11,7 +11,7 @@ namespace DinoGame2.Game.Scripting
         public Texture2D explosion = new Texture2D();
         public string explosion_texture_path = "images/explosion_sprite_sheet_no_green.png";
         float timer = 0.0f;
-        int frame = 0;
+        int frame = -1;
         
         public Draw_actors_if_player_is_dead(VideoService videoservice)
         {
@@ -57,14 +57,20 @@ namespace DinoGame2.Game.Scripting
             }
 
             timer += Raylib.GetFrameTime();
-            if (timer >= 0.1f)
+            //System.Console.WriteLine(Raylib.GetFrameTime());
+            if (timer >= 0.15f)
             {
-                timer += 0.0f;
+                timer = 0.0f;
                 frame += 1;
             }
-
-            int explosionXValue = frame % 15;
-            Raylib.DrawTextureRec(explosion, new Rectangle(frame * 45, 0, 45, 45), new System.Numerics.Vector2(dino.GetPosition().GetX(), dino.GetPosition().GetY()), Raylib_cs.Color.WHITE);
+            System.Console.WriteLine(frame);
+            System.Console.WriteLine(timer);
+            //int explosionXValue = frame % 15;
+            if (frame <= 14)
+            {
+                Raylib.DrawTextureRec(explosion, new Rectangle(frame * 45, 0, 45, 45), new System.Numerics.Vector2(dino.GetPosition().GetX(), dino.GetPosition().GetY()), Raylib_cs.Color.WHITE);
+            }
+            
             videoService.DrawActor(gameOverMessage);
             
             //finishes the drawing so that it can be displayed on screen

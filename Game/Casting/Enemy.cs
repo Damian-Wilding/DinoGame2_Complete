@@ -11,6 +11,7 @@ namespace DinoGame2.Game.Casting
         string text;
         Point position;
         public List<Point> enemyHitboxList = new List<Point>();
+        
 
         int fontSize = Constants.DinoAndEnemyFont_Size;     
         public string ActorImage = "images/evilDino45.png";

@@ -18,17 +18,19 @@ namespace DinoGame2.Game.Directing
         private VideoService videoService;
         public Handle_player_enemy_collision handle_Player_Enemy_Collision;
         public Input_For_Start_New_Game input_For_Start_New_Game;
+        public SoundService soundService;
         
 
         /// <summary>
         /// Constructs a new instance of Director using the given KeyboardService and VideoService.
         /// </summary>
         /// <param name="videoService">The given VideoService.</param>
-        public Director(VideoService videoService, Handle_player_enemy_collision handle_player_enemy_collision, Input_For_Start_New_Game input_For_Start_New_Game)
+        public Director(VideoService videoService, Handle_player_enemy_collision handle_player_enemy_collision, Input_For_Start_New_Game input_For_Start_New_Game, SoundService soundService)
         {
             this.videoService = videoService;
             this.handle_Player_Enemy_Collision = handle_player_enemy_collision;
             this.input_For_Start_New_Game = input_For_Start_New_Game;
+            this.soundService = soundService;
            
         }
 
@@ -40,22 +42,22 @@ namespace DinoGame2.Game.Directing
         public void StartGame(Cast cast, Script script)
         {
 
-            SoundService soundService = new SoundService();
+            
 
             //returns true if the audio device is configured properly
             Console.WriteLine(Raylib.IsAudioDeviceReady());
 
             
-            soundService.PlaySound(soundService.GetSound());
+            this.soundService.PlaySound(soundService.GetSound());
             
 
-            //load all the textures that will be used in the game.
 
             Background background = (Background)cast.GetFirstActor("background");
             Dino dino = (Dino)cast.GetFirstActor("dino");
             Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
             Goal goal = (Goal)cast.GetFirstActor("goal");
             Score score = (Score)cast.GetFirstActor("score");
+            Bullet bullet = new Bullet(cast);
             
             
 
@@ -92,22 +94,23 @@ namespace DinoGame2.Game.Directing
                     Raylib.UnloadTexture(goal.Texture);
                     Raylib.UnloadTexture(background.Texture);
                     Raylib.UnloadImage(score.scoreBackgroundImage);
+                    Raylib.UnloadTexture(bullet.BulletTexture);
                     Raylib.UnloadTexture(score.scoreBackgroundTexture);
-                    Raylib.UnloadTexture(Raylib.LoadTexture("images/explosion_sprite_sheet_no_green.png"));
+                    //Raylib.UnloadTexture(Raylib.LoadTexture("images/explosion_sprite_sheet_no_green.png"));
 
 
                 }
             }   
-            videoService.CloseWindow();
-            Raylib.CloseAudioDevice();
-            Raylib.UnloadTexture(dino.TextureR);
-            Raylib.UnloadTexture(dino.TextureL);
-            Raylib.UnloadTexture(enemy.TextureR);
-            Raylib.UnloadTexture(enemy.TextureL);
-            Raylib.UnloadTexture(goal.Texture);
-            Raylib.UnloadTexture(background.Texture);
-            Raylib.UnloadImage(score.scoreBackgroundImage);
-            Raylib.UnloadTexture(score.scoreBackgroundTexture);
+            //videoService.CloseWindow();
+            //Raylib.CloseAudioDevice();
+            //Raylib.UnloadTexture(dino.TextureR);
+            //Raylib.UnloadTexture(dino.TextureL);
+            //Raylib.UnloadTexture(enemy.TextureR);
+            //Raylib.UnloadTexture(enemy.TextureL);
+            //Raylib.UnloadTexture(goal.Texture);
+            //Raylib.UnloadTexture(background.Texture);
+            //Raylib.UnloadImage(score.scoreBackgroundImage);
+            //Raylib.UnloadTexture(score.scoreBackgroundTexture);
 
             
             

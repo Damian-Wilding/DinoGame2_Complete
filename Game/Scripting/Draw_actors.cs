@@ -40,6 +40,7 @@ namespace DinoGame2.Game.Scripting
             List<Actor> enemies = cast.GetActors("enemy");
             Background background = (Background)cast.GetFirstActor("background");
             Enemy enemy = (Enemy)cast.GetFirstActor("enemy");
+            List<Actor> bullets = cast.GetActors("bullet");
 
             //wipes off the screen to prepare for the new drawing
             videoService.ClearBuffer();
@@ -85,6 +86,10 @@ namespace DinoGame2.Game.Scripting
                 
             }
             
+            foreach (Bullet bullet in bullets)
+            {
+                Raylib.DrawTexture(bullet.BulletTexture, bullet.GetPosition().GetX(), bullet.GetPosition().GetY(), Raylib_cs.Color.WHITE);
+            }
             //test draw explosion
 
             //this.explosion = Raylib.LoadTexture("images/explosion_sprite_sheet_no_green.png");

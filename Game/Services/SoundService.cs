@@ -3,18 +3,27 @@ using Raylib_cs;
 
 namespace DinoGame2.Game.Services
 {
-    class SoundService
+    public class SoundService
     {
         //set variables
         public string BattleTowerSongText = "sounds/pokemonSong.wav";
         public Sound BattleTowerSong;
+        private string ExplosionSoundText = "sounds/explosion.mp3";
+        public Sound ExplosionSound;
+        public string DeathSoundText = "sounds/youdie.mp3";
+        public Sound DeathSound;
+
         //constructor
         public SoundService()
-
         {
             Raylib.InitAudioDevice();
             //Raylib.SetSoundVolume();
             this.BattleTowerSong = Raylib.LoadSound(BattleTowerSongText);
+            this.ExplosionSound = Raylib.LoadSound(ExplosionSoundText);
+            this.DeathSound = Raylib.LoadSound(this.DeathSoundText);
+            Raylib.SetSoundVolume(ExplosionSound, 0.05f);
+            Raylib.SetSoundVolume(DeathSound, 0.05f);
+            Raylib.SetSoundVolume(BattleTowerSong, 0.05f);
         }
 
         //add other methods
@@ -33,6 +42,11 @@ namespace DinoGame2.Game.Services
         public Sound GetSound()
         {
             return this.BattleTowerSong;
+        }
+
+        public Sound GetSoundExplosion()
+        {
+            return this.ExplosionSound;
         }
 
         public string GetSoundString()

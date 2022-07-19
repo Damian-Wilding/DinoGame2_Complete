@@ -20,6 +20,7 @@ namespace DinoGame2.Game
         {
             KeyboardService keyboardService = new KeyboardService();
             VideoService videoService = new VideoService(false);
+            SoundService soundService = new SoundService();
             videoService.OpenWindow();
 
             //creating the cast
@@ -31,6 +32,7 @@ namespace DinoGame2.Game
             cast.AddActor("score", new Score());
             cast.AddActor("goal", new Goal());
             cast.AddActor("background", new Background());
+            //cast.AddActor("bullet", new Bullet());
 
             
             //MyTimer frameCount = new MyTimer();
@@ -44,14 +46,15 @@ namespace DinoGame2.Game
             script.AddAction("input", new Control_dino_action(keyboardService));
             script.AddAction("update", handle_player_enemy_collision);
             script.AddAction("update", new Handle_player_goal_collision());
+            script.AddAction("update", new Handle_bullet_enemy_collision(soundService));
             script.AddAction("update", new Movement());
             script.AddAction("output", new Draw_actors(videoService));
             script.AddAction("inputInGameOver", input_For_Start_New_Game);
-            script.AddAction("updateInGameOver", new Update_enemies_if_player_is_dead());
+            script.AddAction("updateInGameOver", new Update_enemies_if_player_is_dead(soundService));
             script.AddAction("outputInGameOver", new Draw_actors_if_player_is_dead(videoService));
             
             //start the game
-            Director director = new Director(videoService, handle_player_enemy_collision, input_For_Start_New_Game);
+            Director director = new Director(videoService, handle_player_enemy_collision, input_For_Start_New_Game, soundService);
             director.StartGame(cast, script);
         }
     }

@@ -98,6 +98,9 @@ namespace DinoGame2.Game.Scripting
                 GameOverMessage.SetColor(Constants.BLACK);
                 GameOverMessage.SetFontSize(Constants.DinoAndEnemyFont_Size);
                 cast.AddActor("messages", GameOverMessage);
+                //SoundService soundService2 = new SoundService();
+                //soundService2.PlaySound(soundService2.GetSoundExplosion());
+            
                 
             }
         }

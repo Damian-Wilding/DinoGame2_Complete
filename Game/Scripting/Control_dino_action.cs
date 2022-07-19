@@ -14,7 +14,8 @@ namespace DinoGame2.Game.Scripting
     {
         private KeyboardService keyboardService;
         private Point direction = new Point(0, 0);
-        Dino dino;
+        Dino? dino;
+        Bullet? bullet;
 
         /// <summary>
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
@@ -27,6 +28,7 @@ namespace DinoGame2.Game.Scripting
         /// <inheritdoc/>
         public void Execute(Cast cast, Script script)
         {
+            //this.cast = cast;
             dino = (Dino)cast.GetFirstActor("dino");
             // left
             if (keyboardService.IsKeyDown("left"))
@@ -87,6 +89,12 @@ namespace DinoGame2.Game.Scripting
             }
             
             dino.SetVelocity(direction);
+
+            if (keyboardService.IsKeyDown("space"))
+            {
+                this.bullet = new Bullet(cast);
+                cast.AddActor("bullet", bullet);
+            }
         }
     }
 } 

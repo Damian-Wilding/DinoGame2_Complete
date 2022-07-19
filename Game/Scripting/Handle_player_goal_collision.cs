@@ -47,6 +47,7 @@ namespace DinoGame2.Game.Scripting
             Dino dino = (Dino)cast.GetFirstActor("dino");
             Score score = (Score)cast.GetFirstActor("score");
             Goal goal = (Goal)cast.GetFirstActor("goal");
+            List<Actor> bullets = cast.GetActors("bullet");
             
             
             // checks to see if the dino is touching the goal
@@ -62,7 +63,7 @@ namespace DinoGame2.Game.Scripting
                 // Turn the text of score into an int
                 string scoreString = score.GetText(); 
                 int ScoreAsINT = Int32.Parse(scoreString);
-                System.Console.WriteLine(ScoreAsINT);
+                //System.Console.WriteLine(ScoreAsINT);
 
                 // add the goal point(s) to that int
                 ScoreAsINT += goal.points;
@@ -81,6 +82,12 @@ namespace DinoGame2.Game.Scripting
 
                 // moves the dino back to its spawn point
                 dino.SetPosition(Constants.DinoSpawn);
+
+                //remove all left over bullets
+                foreach (Bullet bulletBoi in bullets)
+                {
+                    cast.RemoveActor("bullet", bulletBoi);
+                }
                 
             }
         }
