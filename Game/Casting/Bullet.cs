@@ -8,11 +8,11 @@ namespace DinoGame2.Game.Casting
     {
         private Point velocity = new Point (0, -5);
         public Point position = new Point(0, 0);
-        public string BulletTexturePath = "images/fireball.png";
+        private string BulletTexturePath = "images/fireball.png";
         public List<Point> bulletHitboxList = new List<Point>();
         public Texture2D BulletTexture;
         public string text = "|";
-        public int fontSize = 20;
+        private int fontSize = 20;
         Cast cast;
 
         public Bullet(Cast cast)
